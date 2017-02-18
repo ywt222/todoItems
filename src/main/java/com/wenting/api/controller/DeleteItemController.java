@@ -1,4 +1,4 @@
-package com.wenting.api;
+package com.wenting.api.controller;
 
 import com.wenting.model.Item;
 import com.wenting.repository.ItemRepository;
@@ -22,7 +22,7 @@ public class DeleteItemController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity deleteItem(@PathVariable("id") Long id) {
+    public ResponseEntity deleteItem(@PathVariable("id") Integer id) {
         Item item = itemRepository.findById(id);
 
         if (item == null) {

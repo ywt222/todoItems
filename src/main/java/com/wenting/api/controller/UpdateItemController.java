@@ -1,4 +1,4 @@
-package com.wenting.api;
+package com.wenting.api.controller;
 
 import com.wenting.api.viewmodel.UpdatedItem;
 import com.wenting.model.Item;
@@ -24,7 +24,7 @@ public class UpdateItemController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Item> updateItem(@PathVariable("id") Long id,
+    public ResponseEntity<Item> updateItem(@PathVariable("id") Integer id,
                                            @RequestBody UpdatedItem updatedItem) {
 
         Item item = itemRepository.findById(id);

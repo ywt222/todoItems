@@ -1,4 +1,4 @@
-package com.wenting.api;
+package com.wenting.api.controller;
 
 import com.wenting.api.viewmodel.NewItem;
 import com.wenting.model.Item;
