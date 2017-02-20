@@ -1,4 +1,4 @@
-package com.wenting.api.viewmodel;
+package com.wenting.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.wenting.model.Item;

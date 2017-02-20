@@ -1,6 +1,6 @@
 package com.wenting.api.controller;
 
-import com.wenting.api.viewmodel.Items;
+import com.wenting.api.request.Items;
 import com.wenting.model.Item;
 import com.wenting.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

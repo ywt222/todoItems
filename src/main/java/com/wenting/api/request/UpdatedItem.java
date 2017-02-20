@@ -1,4 +1,4 @@
-package com.wenting.api.viewmodel;
+package com.wenting.api.request;
 
 public class UpdatedItem {
   private String text;

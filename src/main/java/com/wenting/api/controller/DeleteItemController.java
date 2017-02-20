@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/todoitems")
+@RequestMapping("/todoitems/{id}")
 public class DeleteItemController {
     private ItemRepository itemRepository;
 
@@ -21,7 +21,7 @@ public class DeleteItemController {
         this.itemRepository = itemRepository;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteItem(@PathVariable("id") Integer id) {
         Item item = itemRepository.findById(id);
 

@@ -25,6 +25,15 @@ public class Item {
     @Column(name = "done")
     private Boolean done;
 
+    public Item() {
+    }
+
+    public Item(Integer id, String text, Boolean done) {
+        this.id = id;
+        this.text = text;
+        this.done = done;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,33 +1,28 @@
 package com.wenting.api.controller;
 
 import com.wenting.api.helper.TestItemRepository;
-import com.wenting.api.viewmodel.NewItem;
+import com.wenting.api.request.NewItem;
 import com.wenting.model.Item;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class CreateItemControllerTest {
     private TestItemRepository testItemRepository;
     private CreateItemController createItemController;
-    private NewItem request;
-    private String newText = "this is new created text";
-
-    @Before
-    public void setUp() throws Exception {
-        testItemRepository = new TestItemRepository();
-        createItemController = new CreateItemController(testItemRepository);
-        request = new NewItem();
-        request.setText(newText);
-    }
 
     @Test
     public void shouldCreateItemSuccessfully() throws Exception {
-        ResponseEntity<Item> response = createItemController.createNewItem(request);
+        Item item = new Item(1, "first test text", true);
+
+        testItemRepository = new TestItemRepository(item);
+        createItemController = new CreateItemController(testItemRepository);
+        ResponseEntity<Item> response = createItemController.createNewItem(new NewItem());
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertSame(item, response.getBody());
     }
 }

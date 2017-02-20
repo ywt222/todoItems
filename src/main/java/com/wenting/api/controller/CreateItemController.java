@@ -1,6 +1,6 @@
 package com.wenting.api.controller;
 
-import com.wenting.api.viewmodel.NewItem;
+import com.wenting.api.request.NewItem;
 import com.wenting.model.Item;
 import com.wenting.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +26,8 @@ public class CreateItemController {
     public ResponseEntity<Item> createNewItem(@RequestBody NewItem newItem) {
         Item item = new Item();
 
-        if (!(newItem.getText() instanceof String)) {
-            return ResponseEntity.badRequest().build();
-        }
-
         item.setText(newItem.getText());
+        item.setDone(false);
         itemRepository.save(item);
 
         Item response = itemRepository.findById(item.getId());
