@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  _base:
+    image: anapsix/alpine-java:8_server-jre
+    volumes:
+      - .:/todoItems
+      - gradle-cache:/root/.gradle/caches
+    working_dir: /todoItems
+    environment:
+      DB_HOST: mysql
+      DB_NAME: todo_item
+      DB_USER: root
+      DB_PASSWORD: password
+
+  api:
+    extends:
+      service: _base
+    command: ['./gradlew', 'bootRun']
+    depends_on:
+      - mysql
+    ports:
+      - "9090:9090"
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+       - ./src/main/resources/db.migration:/docker-entrypoint-initdb.d
+
+volumes:
+  gradle-cache:
