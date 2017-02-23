@@ -17,13 +17,13 @@ public class Item {
     private Integer id;
 
     @Column(name = "timestamp")
-    private Date timestamp;
+    private Date timestamp = new Date();
 
     @Column(name = "text")
     private String text;
 
     @Column(name = "done")
-    private Boolean done;
+    private Boolean done = false;
 
     public Item() {
     }

@@ -27,7 +27,6 @@ public class CreateItemController {
         Item item = new Item();
 
         item.setText(newItem.getText());
-        item.setDone(false);
         itemRepository.save(item);
 
         Item response = itemRepository.findById(item.getId());
