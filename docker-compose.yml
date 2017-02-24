@@ -2,7 +2,7 @@ version: '2'
 
 services:
   _base:
-    image: anapsix/alpine-java:8_server-jre
+    image: anapsix/alpine-java:8_jdk
     volumes:
       - .:/todoItems
       - gradle-cache:/root/.gradle/caches
